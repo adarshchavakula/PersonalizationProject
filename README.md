@@ -20,22 +20,28 @@ The following is the play counts for the entire dataset, grouped by hour of the 
 ## Part I Objective
 We are interested in learning how neighborhood- and model-based collaborative filters (CF) compare against each other in terms of AUC and RMSE.  These CF approaches will help us understand how an improved recommendation engine can drive increased user engagement with the music platform.  In addition, a good implementation of a CF engine has potential to reduce royalties paid by the platform by minimizing skips (see Part II Objective) and suggesting tracks that users are more likely to enjoy.
 
+### Neighborhood-Based CF Analysis
 We are using the **insert name** as a benchmark for a neighborhood-based CF because **insert reason**.
 * How was the data preprocessed?
 * What similarity metric did you use?
 * How are the training, tuning and test datasets defined?
 * How is the model evaluated?
 
+
+### Model-Based CF Analysis
 We are using the **insert name** as a benchmark for a model-based CF because **insert reason**.
 * How was the data preprocessed?
 * How are the training, tuning and test datasets defined?
 * How is the model evaluated?
+
 
 ### Table 1. Model Comparison
 Model | AUC | RMSE | Metric 3
 --- | --- | --- | ---
 Neighborhood-Based | XXX | XXX | XXX
 Model-Based | XXX | XXX | XXX
+
+### Conclusion
 
 
 ## Part II Objective
