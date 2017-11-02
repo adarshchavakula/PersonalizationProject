@@ -13,6 +13,8 @@ The dataset passively measures users’ listening history without explicitly rec
 
 - **add brief summary of data**
 - **add one or two visualization of data**
+A preview of the data is shown here:
+![Data Preview](data/DataPreview.png)
 
 The following is the play counts for the entire dataset, grouped by hour of the day (left) and day of the week (right):
 ![Play Counts by hour of day and day of week](data/PlayCounts.png)
