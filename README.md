@@ -14,6 +14,9 @@ The dataset passively measures users’ listening history without explicitly rec
 - **add brief summary of data**
 - **add one or two visualization of data**
 
+The following is the play counts for the entire dataset, grouped by hour of the day (left) and day of the week (right):
+![Play Counts by hour of day and day of week](data/PlayCounts.png)
+
 ## Part I Objective
 We are interested in learning how neighborhood- and model-based collaborative filters (CF) compare against each other in terms of AUC and RMSE.  These CF approaches will help us understand how an improved recommendation engine can drive increased user engagement with the music platform.  In addition, a good implementation of a CF engine has potential to reduce royalties paid by the platform by minimizing skips (see Part II Objective) and suggesting tracks that users are more likely to enjoy.
 
