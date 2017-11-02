@@ -5,15 +5,13 @@ We chose to investigate the Last.fm data using a temporal collaborative filterin
 ## The Data
 
 Last.fm dataset contains:
-* Listening habits for roughly 1,000 users,
-* About 177K artists with timestamped entries,
+* Listening habits for roughly 992 users
+* 173,921 artists with timestamped entries
 * Metafile containing user profiles (e.g., gender, age, country and signup date).
  
-The dataset passively measures users’ listening history without explicitly recording feedback on artist and track pairs.  As there is no input from a user on whether she liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
+The dataset records users’ listening history without recording explicit feedback on artist and track pairs.  As there is no input from a user on whether they liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
 
-- **add brief summary of data**
-- **add one or two visualization of data**
-A preview of the data is shown here:
+A preview of the data is shown here, with the leftmost column as the Pandas index:
 ![Data Preview](data/DataPreview.png)
 
 The following is the play counts for the entire dataset, grouped by hour of the day (left) and day of the week (right):
