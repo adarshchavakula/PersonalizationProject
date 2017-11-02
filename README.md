@@ -11,8 +11,8 @@ Last.fm dataset contains:
  
 The dataset passively measures users’ listening history without explicitly recording feedback on artist and track pairs.  As there is no input from a user on whether she liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
 
-**add brief summary of data**
-**add one or two visualization of data**
+- **add brief summary of data**
+- **add one or two visualization of data**
 
 ## Part I Objective
 We are interested in learning how neighborhood- and model-based collaborative filters (CF) compare against each other in terms of AUC and RMSE.  These CF approaches will help us understand how an improved recommendation engine can drive increased user engagement with the music platform.  In addition, a good implementation of a CF engine has potential to reduce royalties paid by the platform by minimizing skips (see Part II Objective) and suggesting tracks that users are more likely to enjoy.
