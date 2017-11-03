@@ -21,9 +21,11 @@ The following is the play counts for the entire dataset, grouped by hour of the 
 We are interested in learning how neighborhood- and model-based collaborative filters (CF) compare against each other in terms of AUC and RMSE.  These CF approaches will help us understand how an improved recommendation engine can drive increased user engagement with the music platform.  In addition, a good implementation of a CF engine has potential to reduce royalties paid by the platform by minimizing skips (see Part II Objective) and suggesting tracks that users are more likely to enjoy.
 
 ### Neighborhood-Based CF Analysis
+We implemented an user-user neighborhood based collaorative filtering technique. 
 We are using the **insert name** as a benchmark for a neighborhood-based CF because **insert reason**.
 * How was the data preprocessed?
 * What similarity metric did you use?
+![Visualization of correlation between users](data/highly-correlated-users.png)
 * How are the training, tuning and test datasets defined?
 * How is the model evaluated?
 
