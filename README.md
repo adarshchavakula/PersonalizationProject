@@ -40,10 +40,10 @@ We are using the SVD algorithm as a benchmark for a model-based CF.  We use the 
 
 
 ### Table 1. Model Comparison
-Model | AUC | RMSE | Metric 3
---- | --- | --- | ---
-Neighborhood-Based | XXX | XXX | XXX
-Model-Based | XXX | XXX | XXX
+Model | MAE | RMSE
+--- | --- | --- 
+Neighborhood-Based | XXX | XXX 
+Model-Based | 0.0003 | 0.0013 
 
 ### Conclusion
 
