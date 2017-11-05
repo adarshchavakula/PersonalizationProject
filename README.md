@@ -4,17 +4,19 @@ We chose to investigate the Last.fm data using a temporal collaborative filterin
 
 ## The Data
 
-Last.fm dataset contains:
+Last.fm data set contains:
 * Listening habits for roughly 992 users
 * 173,921 artists with timestamped entries
 * Metafile containing user profiles (e.g., gender, age, country and signup date).
+
+The 1K data set can be found through this [link](http://www.dtic.upf.edu/~ocelma/MusicRecommendationDataset/lastfm-1K.html). The data was collected by Òscar Celma.
  
-The dataset records users’ listening history without recording explicit feedback on artist and track pairs.  As there is no input from a user on whether they liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
+The data set records users’ listening history without recording explicit feedback on artist and track pairs.  As there is no input from a user on whether they liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
 
 A preview of the data is shown here, with the leftmost column as the Pandas index:
 ![Data Preview](data/DataPreview.png)
 
-The following is the play counts for the entire dataset, grouped by hour of the day (left) and day of the week (right):
+The following is the play counts for the entire data set, grouped by hour of the day (left) and day of the week (right):
 ![Play Counts by hour of day and day of week](data/PlayCounts.png)
 
 ## Part I Objective
@@ -26,14 +28,14 @@ We are using the **insert name** as a benchmark for a neighborhood-based CF beca
 * How was the data preprocessed?
 * What similarity metric did you use?
 ![Visualization of correlation between users](data/highly-correlated-users.png)
-* How are the training, tuning and test datasets defined?
+* How are the training, tuning and test data sets defined?
 * How is the model evaluated?
 
 
 ### Model-Based CF Analysis
-We are using the **insert name** as a benchmark for a model-based CF because **insert reason**.
+We are using the SVD algorithm as a benchmark for a model-based CF.  We use the Surprise package, which can be installed using the following command: $ pip install scikit-surprise.  Read more about Surprise [here](http://surpriselib.com/).
 * How was the data preprocessed?
-* How are the training, tuning and test datasets defined?
+* How are the training, tuning and test data sets defined?
 * How is the model evaluated?
 
 
@@ -55,4 +57,4 @@ We will incorporate timestamps and signup dates to further clarify users’ pref
  
 ## Sources/Relevant Literature
  
-Hu, Y., Koren, Y., & Volinsky, C. Collaborative Filtering for Implicit Feedback Datasets. Retrieved from http://yifanhu.net/PUB/cf.pdf
+Hu, Y., Koren, Y., & Volinsky, C. Collaborative Filtering for Implicit Feedback Data Sets. Retrieved from http://yifanhu.net/PUB/cf.pdf
