@@ -6,7 +6,7 @@ The following python packages are required for running the codes:
 
 1. Pandas - for reading and writing files
 2. NumPy - array operation
-2. Scikit-Learn - for error metrics, train/test split
-3. Matplotlib - plots
-4. Seaborn - plots
-5. Surprise - model-based algorithms
+3. Scikit-Learn - for error metrics, train/test split
+4. Matplotlib - plots
+5. Seaborn - plots
+6. Surprise - model-based algorithms
