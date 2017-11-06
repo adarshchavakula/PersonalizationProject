@@ -9,4 +9,4 @@ The following python packages are required for running the codes:
 2. Scikit-Learn - for error metrics, train/test split
 3. Matplotlib - plots
 4. Seaborn - plots
-
+5. Surprise - model-based algorithms
