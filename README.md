@@ -20,61 +20,56 @@ The following is the play counts for the entire data set, grouped by hour of the
 ![Play Counts by hour of day and day of week](data/PlayCounts.png)
 
 ## Part I Objective
-We are interested in learning how neighborhood - and model-based collaborative filters (CF) would perform on aggregated data.   These CF approaches will help us understand how an improved recommendation engine can drive increased user engagement with the music platform.  We intend to ustilize timestamps fot the final project along with other metadata to build better personalization systems.
+We are interested in learning how neighborhood - and model-based collaborative filters (CF) would perform on aggregated data. These CF approaches will help us understand how an improved recommendation engine can drive increased user engagement with the music platform.  We intend to ustilize timestamps fot the final project along with other metadata to build better personalization systems.
 
-### Neighborhood-Based CF Analysis
-We implemented an user-user neighborhood based collaorative filtering technique. We tried to predict the interest that a user may have in a particular artist in terms of the number of times they would listen to an artist, based on their average artist counts and that of their peers.
+### Neighborhood-Based Collaborative Filter Analysis
+We implemented an user-user neighborhood based collaorative filtering technique. We tried to predict the interest that a user may have in a particular artist in terms of the number of times they would listen to an artist, based on their average artist plays and that of their peers.
 
-* Data preprocessing:
-We grouped our data into artists and users for the first part of the project. Hence the recommendations would be at an artist level and not individual songs. There is no additional pre-processing.
+#### Data preprocessing
+We grouped our data into artists and users for the first part of the project, with the values as number of plays. Hence the recommendations are at an artist level and not individual songs. There is no additional pre-processing.
 
-* Similarity Metric:
-We used Pearson correlation, primarily because of the nature of the dataset and how missing values are interpreted. We intend to find similarity between users on their common tastes, irrespective of missing values.
+#### Similarity Metric
+We used Pearson correlation, primarily because of the nature of the dataset and how missing values are interpreted. We found the find similarity between users on their common tastes, irrespective of missing values.
 
-![Visualization of correlation between users](data/highly-correlated-users.png)
 *Network of highly correlated users*
+![Visualization of correlation between users](data/highly-correlated-users.png)
 
-* Training and Testing data:
-We split the dataset into a 80-20 train-test split for this exercise. This split was not completely random. For each user, a random 20% of the artists they listen to are put into the test data. This ensures that every user is represented in the test data. There is no explicit validation (tuning) dataset. This choice was made because of the nature of the model which relies on the similarities between users, has only one hyperparameter K and has no scope for overfitting the test data. Having an additional tuning dataset would result in loss of data for the training purposes. 
 
-* Model evaluation
+#### Training and Testing data
+We split the dataset into 80-20 train-test split. This split was not completely random. For each user, a random 20% of the artists they listen to are put into the test data. This ensures that every user is represented in the test data. There is no explicit validation (tuning) dataset. This choice was made because of the nature of the model which relies on the similarities between users, has only one hyperparameter K and has no scope for overfitting the test data. Having an additional tuning dataset would result in loss of data for training purposes. 
+
+#### Model evaluation
 Since the prediction value is the number of times a user is expected to listen to an artist, which is a continuous variable, we chose to use RMSE and MAE, which are standard metrics for evaluating continuous predctors.
 
-* Additonal Design Considerations
-We considered having an item-item based collaborative filtering model but decided to stick to user-user based. This choice was made because we had about 1000 users but nearly 174,000 unique artists. The similarity matrix for such a large number of items would be huge as well as extremely sparse. Most artists feature only a few times in the dataset and hence would not have any similar neighbors for a meaningful analysis. 
+#### Additonal Design Considerations
+We considered having an item-item based collaborative filtering model but decided to stick with user-user based. This choice was made because we have 992 users but nearly 174,000 unique artists. The similarity matrix for such a large number of items would be huge as well as extremely sparse. Most artists feature only a few times in the dataset and hence would not have any similar neighbors for a meaningful analysis. 
 
-We also decided to work with just aggregated artists for the first part of the project. For our final project, we would like include content based models with time as an important variable. In line with our objective we would analyze time of day with relation to music listened to. In addition, since music tastes may drastically change over time for each user, we would also consider “recency” as a factor, mainly looking at the last time an artist was listened to.
+We also decided to work with aggregated artists for the first part of the project. This helps reduce the size and complexity of the data for our first exploration of the data. For our final project, we will include content based models with time as an important variable.
 
-* Model performance with hyperparameter tuning
-The model has only hyperparameter - the neighborhood size K. Increasing it improves both RMSE and MAE on the test data. 
+#### Model performance with hyperparameter tuning
+The model has only one hyperparameter - the neighborhood size K. Increasing K improves both RMSE and MAE. 
 
 ![Neighbors RMSE vs K](data/neighbors_mse_vs_k.png)
 
 ![Neighbors MAE vs K](data/neighbors_mae_vs_k.png)
 
-* Model performance with data size
+#### Model performance with data size
 We varied the data size sytematically from 100 users to 1000, keeping a constant K value. The results are follows:
 
 ![Neighbors RMSE vs Sample Size](data/neighbors_mse_vs_sample_size.png)
 
 ![Neighbors MAE vs Sample Size](data/neighbors_mae_vs_sample_size.png)
 
-* Scaling of running time with data size
+#### Scaling of running time with data size
 Finding user-user similarity matrix is an O(n^2) operation as each pair of users need to be assessed. Making predictions is an O(K n) operation, as for each user, we need to look at all their K peers and predict accordingly. The total running time is hence asymptotically dominated by the similarity matrix step which scales as O(n^2).
 
 
-### Model-Based CF Analysis
-We are using the SVD algorithm as a benchmark for a model-based CF.  We use the Surprise package, which can be installed using the following command: $ pip install scikit-surprise.  Read more about Surprise [here](http://surpriselib.com/).
+### Model-Based Collaborative Filter Analysis
+We are using the SVD algorithm as a benchmark for a model-based CF.  We use the Surprise package, which can be installed using the following command: `pip install scikit-surprise`.  Read more about Surprise [here](http://surpriselib.com/).
 * How was the data preprocessed?
 * How are the training, tuning and test data sets defined?
 * How is the model evaluated?
 
-
-### Table 1. Model Comparison
-Model | MAE | RMSE
---- | --- | --- 
-Neighborhood-Based | XXX | XXX 
-Model-Based | 0.0003 | 0.0013 
 
 ### Conclusion
 
