@@ -23,13 +23,22 @@ The following is the play counts for the entire data set, grouped by hour of the
 We are interested in learning how neighborhood- and model-based collaborative filters (CF) compare against each other in terms of AUC and RMSE.  These CF approaches will help us understand how an improved recommendation engine can drive increased user engagement with the music platform.  In addition, a good implementation of a CF engine has potential to reduce royalties paid by the platform by minimizing skips (see Part II Objective) and suggesting tracks that users are more likely to enjoy.
 
 ### Neighborhood-Based CF Analysis
-We implemented an user-user neighborhood based collaorative filtering technique. 
-We are using the **insert name** as a benchmark for a neighborhood-based CF because **insert reason**.
-* How was the data preprocessed?
-* What similarity metric did you use?
+We implemented an user-user neighborhood based collaorative filtering technique. We tried to predict the interest that a user may have in a particular artist in terms of the number of times they would listen to an artist, based on their average artist counts and that of their peers.
+
+* Data preprocessing:
+We grouped our data into artists and users for the first part of the project. Hence the recommendations would be at an artist level and not individual songs. There is no additional pre-processing.
+
+* Similarity Metric:
+We used Pearson correlation, primarily because of the nature of the dataset and how missing values are interpreted. We intend to find similarity between users on their common tastes, irrespective of missing values.
+
 ![Visualization of correlation between users](data/highly-correlated-users.png)
-* How are the training, tuning and test data sets defined?
+*Network of highly correlated users*
+
+* Training and Testing data:
+We split the dataset into a 80-20 train-test split for this exercise. This split was not completely random. For each user, a random 20% of the artists they listen to are put into the test data. This ensures that every user is represented in the test data. There is no explicit validation (tuning) dataset. This choice was made because of the nature of the model which relies on the similarities between users, has only one hyperparameter K and has no scope for overfitting the test data. Having an additional tuning dataset would result in loss of data for the training purposes. 
+
 * How is the model evaluated?
+Since the prediction value is the number of times a user is expected to listen to an artist, which is a continuous variable, we chose to use RMSE and MAE, which are standard metrics for evaluating continuous predctors.
 
 
 ### Model-Based CF Analysis
