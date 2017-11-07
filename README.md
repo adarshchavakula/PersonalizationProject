@@ -61,7 +61,7 @@ We varied the data size sytematically from 100 users to 1000, keeping a constant
 ![Neighbors MAE vs Sample Size](data/neighbors_mae_vs_sample_size.png)
 
 #### Scaling of running time with data size
-Finding user-user similarity matrix is an O(n^2) operation as each pair of users need to be assessed. Making predictions is an O(K n) operation, as for each user, we need to look at all their K peers and predict accordingly. The total running time is hence asymptotically dominated by the similarity matrix step which scales as O(n^2).
+Finding user-user similarity matrix is an O(n^2) operation as each pair of users need to be assessed. Making predictions is an O(K\*n) operation, as for each user, we need to look at all their K peers and predict accordingly. The total running time is hence asymptotically dominated by the similarity matrix step which scales as O(n^2).
 
 
 ### Model-Based Collaborative Filter Analysis
