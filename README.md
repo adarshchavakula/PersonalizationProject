@@ -31,10 +31,6 @@ We grouped our data into artists and users for the first part of the project, wi
 #### Similarity Metric
 We used Pearson correlation, primarily because of the nature of the dataset and how missing values are interpreted. We found the find similarity between users on their common tastes, irrespective of missing values.
 
-*Network of highly correlated users*
-![Visualization of correlation between users](data/highly-correlated-users.png)
-
-
 #### Training and Testing data
 We split the dataset into 80-20 train-test split. This split was not completely random. For each user, a random 20% of the artists they listen to are put into the test data. This ensures that every user is represented in the test data. There is no explicit validation (tuning) dataset. This choice was made because of the nature of the model which relies on the similarities between users, has only one hyperparameter K and has no scope for overfitting the test data. Having an additional tuning dataset would result in loss of data for training purposes. 
 
