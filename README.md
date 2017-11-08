@@ -84,14 +84,17 @@ We tuned the number of factors, the regularization coefficient, and the learning
 
 ##### Number of Factors
 As the number of factors in the model increases, our RMSE decreases.
+
 ![Number of factors RMSE](data/factors_plot.png)
 
 ##### Regularization Coefficient
 As the regularization coefficient decreases, our RMSE decreases. Once this coefficient goes about 0.06, our model stops outperforming the baseline.
+
 ![Regularization coefficient RMSE](data/reg_plot.png)
 
 ##### Learning Rate
 As the learning rate increases, our RMSE decreases.
+
 ![Learning rate RMSE](data/learn_plot.png)
 
 #### Additonal Design Considerations
