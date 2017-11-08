@@ -95,7 +95,11 @@ SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}). As our number 
 
 
 ### Conclusion
-The neighborhood-based collaborative filter results in a better RMSE at higher values of k, but does not bring MAE to a competitive level when compared to the baseline model. However, the model-based collaborative filter outperforms the baseline at every comparison. Our initial results of this analysis suggest that a model-based collaborative filter will be more effective at predicting user preferences.
+The neighborhood-based collaborative filter results in a better RMSE at higher values of k, but does not bring MAE to a competitive level when compared to the baseline model. This is somewhat surprising, but demonstrates that this model would not be useful in a production setting.
+
+On the other hand, the model-based collaborative filter outperforms the baseline at every comparison. Our initial results of this analysis suggest that a model-based collaborative filter will be more effective at predicting user preferences. While the model can certainly be improved with a more granular look at the data, we believe this model would be helpful for a draft recommender system.
+
+While the neighborhood-based CF used a different data structure than the model-based CF, this is due to the nature of the models. The comparison to the baseline is a better indicator of model performance than the comparison to each other.
 
 ## Part II Objective
 We will incorporate timestamps and signup dates to further clarify users’ preferences for artists and tracks.  Based on these data points, we can derive a skips parameter.  This parameter indicates whether the user skipped to the next track in the playlist and will help us answer questions such as:
