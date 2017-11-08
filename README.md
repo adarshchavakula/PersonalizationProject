@@ -88,7 +88,7 @@ As the number of factors in the model increases, our RMSE decreases.
 ![Number of factors RMSE](data/factors_plot.png)
 
 ##### Regularization Coefficient
-As the regularization coefficient decreases, our RMSE decreases. Once this coefficient goes about 0.06, our model stops outperforming the baseline.
+As the regularization coefficient increases, our RMSE increases. Once this coefficient goes about 0.06, our model stops outperforming the baseline.
 
 ![Regularization coefficient RMSE](data/reg_plot.png)
 
@@ -108,9 +108,11 @@ The model loses quite a bit of accuracy as the data size decreases. However, SVD
 The accuracy of the baseline and our model increase with an increased number of artists. SVD still outperforms the baseline at every size.
 
 RMSE of ALS and SVD as number of artists increase:
+
 ![RMSE data size](data/data_size_RMSE.png)
 
 MAE of ALS and SVD as number of artists increase:
+
 ![MAE data size](data/data_size_RMSE.png)
 
 #### Scaling of running time with data size
