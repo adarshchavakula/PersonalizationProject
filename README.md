@@ -84,14 +84,17 @@ We tuned the number of factors, the regularization coefficient, and the learning
 
 ##### Number of Factors
 As the number of factors in the model increases, our RMSE decreases.
+
 ![Number of factors RMSE](data/factors_plot.png)
 
 ##### Regularization Coefficient
-As the regularization coefficient decreases, our RMSE decreases. Once this coefficient goes about 0.06, our model stops outperforming the baseline.
+As the regularization coefficient increases, our RMSE increases. Once this coefficient goes about 0.06, our model stops outperforming the baseline.
+
 ![Regularization coefficient RMSE](data/reg_plot.png)
 
 ##### Learning Rate
 As the learning rate increases, our RMSE decreases.
+
 ![Learning rate RMSE](data/learn_plot.png)
 
 #### Additonal Design Considerations
@@ -103,6 +106,14 @@ We also would like to include more features as part of this model. The dataset c
 The model loses quite a bit of accuracy as the data size decreases. However, SVD is not an efficient algorithm, so as the number of artists increases, the amount of time to train the model increases exponentially. This makes it very computationally expensive to update the model.
 
 The accuracy of the baseline and our model increase with an increased number of artists. SVD still outperforms the baseline at every size.
+
+RMSE of ALS and SVD as number of artists increase:
+
+![RMSE data size](data/data_size_RMSE.png)
+
+MAE of ALS and SVD as number of artists increase:
+
+![MAE data size](data/data_size_RMSE.png)
 
 #### Scaling of running time with data size
 SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}). As our number of users `n` is fixed at 992, the runtime is O(m<sup>2</sup>n). As the number of artists grow, the runtime increases exponentially.
