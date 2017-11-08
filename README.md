@@ -72,6 +72,13 @@ We used 3 folds for all of our models.
 #### Model evaluation
 We used a simple Alternating Least Squares (ALS) model to use as a baseline for our model-based CF. This came as a default model in the `Surprise` package. We use this to assess the results of our Singular Value Decomposition (SVD) model below.
 
+SVD outperforms ALS across all of our hyperparameter tuning and data size variation. With our optimal SVD model, we see the following results compared to the baseline:
+
+Model | RMSE | MAE
+--- | --- | ---
+ALS (baseline) | 0.2547 | 0.1366
+SVD | 0.2355 | 0.1199
+
 #### Model performance with hyperparameter tuning
 We tuned the number of factors, the regularization coefficient, and the learning rate of our SVD model to find a more optimal model. Our best model, when using RMSE and MAE as our accuracy metrics, used 120 factors, a regularization coefficient of 0.02, and a learning rate of 0.01.
 
