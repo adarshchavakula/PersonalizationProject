@@ -5,11 +5,11 @@ We chose to investigate the Last.fm data set using a temporal collaborative filt
 ## The Data
 
 Last.fm data set contains:
-* Listening habits for roughly 992 users
+* Listening habits for 992 users
 * 173,921 artists with timestamped entries
 * Metafile containing user profiles (e.g., gender, age, country and signup date).
 
-The 1K data set can be found through this [link](http://www.dtic.upf.edu/~ocelma/MusicRecommendationDataset/lastfm-1K.html). The data was collected by Òscar Celma.
+The data set can be found through this [link](http://www.dtic.upf.edu/~ocelma/MusicRecommendationDataset/lastfm-1K.html). The data was collected by Òscar Celma.
  
 The data set records users’ listening history without recording explicit feedback on artist and track pairs.  As there is no input from a user on whether they liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
 
