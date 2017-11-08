@@ -104,6 +104,12 @@ The model loses quite a bit of accuracy as the data size decreases. However, SVD
 
 The accuracy of the baseline and our model increase with an increased number of artists. SVD still outperforms the baseline at every size.
 
+RMSE of ALS and SVD as number of artists increase:
+![RMSE data size](data/data_size_RMSE.png)
+
+MAE of ALS and SVD as number of artists increase:
+![MAE data size](data/data_size_RMSE.png)
+
 #### Scaling of running time with data size
 SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}). As our number of users `n` is fixed at 992, the runtime is O(m<sup>2</sup>n). As the number of artists grow, the runtime increases exponentially.
 
