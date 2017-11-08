@@ -102,6 +102,8 @@ We also would like to include more features as part of this model. The dataset c
 #### Model performance with data size
 The model loses quite a bit of accuracy as the data size decreases. However, SVD is not an efficient algorithm, so as the number of artists increases, the amount of time to train the model increases exponentially. This makes it very computationally expensive to update the model.
 
+The accuracy of the baseline and our model increase with an increased number of artists. SVD still outperforms the baseline at every size.
+
 #### Scaling of running time with data size
 SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}). As our number of users `n` is fixed at 992, the runtime is O(m<sup>2</sup>n). As the number of artists grow, the runtime increases exponentially.
 
