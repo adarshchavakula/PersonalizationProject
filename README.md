@@ -72,7 +72,7 @@ We used 3 folds for all of our models.
 #### Model evaluation
 We used a simple Alternating Least Squares (ALS) model to use as a baseline for our model-based CF. This came as a default model in the `Surprise` package. We use this to assess the results of our Singular Value Decomposition (SVD) model below.
 
-SVD outperforms ALS across all of our hyperparameter tuning and data size variation. With our optimal SVD model, we see the following results compared to the baseline:
+SVD outperforms ALS across nearly all of our hyperparameter tuning and data size variation. With our optimal SVD model, we see the following results compared to the baseline:
 
 Model | RMSE | MAE
 --- | --- | ---
@@ -81,6 +81,18 @@ SVD | 0.2355 | 0.1199
 
 #### Model performance with hyperparameter tuning
 We tuned the number of factors, the regularization coefficient, and the learning rate of our SVD model to find a more optimal model. Our best model, when using RMSE and MAE as our accuracy metrics, used 120 factors, a regularization coefficient of 0.02, and a learning rate of 0.01.
+
+##### Number of Factors
+As the number of factors in the model increases, our RMSE decreases.
+![Number of factors RMSE](data/factors_plot.png)
+
+##### Regularization Coefficient
+As the regularization coefficient decreases, our RMSE decreases. Once this coefficient goes about 0.06, our model stops outperforming the baseline.
+![Regularization coefficient RMSE](data/reg_plot.png)
+
+##### Learning Rate
+As the learning rate increases, our RMSE decreases.
+![Learning rate RMSE](data/learn_plot.png)
 
 #### Additonal Design Considerations
 After seeing these results, we would like to see if we can use more computing power to increase the number of artists and complexity of the model. We think this might result in improved results.
@@ -97,7 +109,7 @@ SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}). As our number 
 ### Conclusion
 The neighborhood-based collaborative filter results in a better RMSE at higher values of k, but does not bring MAE to a competitive level when compared to the baseline model. This is somewhat surprising, but demonstrates that this model would not be useful in a production setting.
 
-On the other hand, the model-based collaborative filter outperforms the baseline at every comparison. Our initial results of this analysis suggest that a model-based collaborative filter will be more effective at predicting user preferences. While the model can certainly be improved with a more granular look at the data, we believe this model would be helpful for a draft recommender system.
+On the other hand, the model-based collaborative filter outperforms the baseline at almost every comparison. Our initial results of this analysis suggest that a model-based collaborative filter will be more effective at predicting user preferences. While the model can certainly be improved with a more granular look at the data, we believe this model would be helpful for a draft recommender system.
 
 While the neighborhood-based CF used a different data structure than the model-based CF, this is due to the nature of the models. The comparison to the baseline is a better indicator of model performance than the comparison to each other.
 
