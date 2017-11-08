@@ -116,7 +116,7 @@ MAE of ALS and SVD as number of artists increase:
 ![MAE data size](data/data_size_RMSE.png)
 
 #### Scaling of running time with data size
-SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}).  As our number of users `n` is fixed at 992, the runtime is O(m<sup>2</sup>n). As the number of artists grow, the runtime increases quadratically.
+SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}).  As our number of users `n` is fixed at 992, the runtime is O(mn<sup>2</sup>). As the number of artists grow, the runtime increases quadratically.
 
 
 ### Conclusion
