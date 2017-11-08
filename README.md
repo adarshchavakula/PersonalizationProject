@@ -103,7 +103,7 @@ After observing these results, we would like to see if we can use more computing
 We also would like to include more features as part of this model.  The dataset came with very limited information about the artists.  We believe that including additional information, such as genre or nationality of artist, might add additional value to the model.
 
 #### Model performance with data size
-The model loses quite a bit of accuracy as the data size decreases.  However, SVD is not an efficient algorithm, so as the number of artists increases, the amount of time to train the model increases exponentially.  This makes it computationally expensive to update the model.
+The model loses quite a bit of accuracy as the data size decreases.  However, SVD is not an efficient algorithm, so as the number of artists increases, the amount of time to train the model increases quadratically.  This makes it computationally expensive to update the model.
 
 The accuracy of the baseline and our model increase with an increased number of artists.  SVD still outperforms the baseline at every size.
 
@@ -116,7 +116,7 @@ MAE of ALS and SVD as number of artists increase:
 ![MAE data size](data/data_size_RMSE.png)
 
 #### Scaling of running time with data size
-SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}).  As our number of users `n` is fixed at 992, the runtime is O(m<sup>2</sup>n). As the number of artists grow, the runtime increases exponentially.
+SVD has a running time of O(min{mn<sup>2</sup>, m<sup>2</sup>n}).  As our number of users `n` is fixed at 992, the runtime is O(m<sup>2</sup>n). As the number of artists grow, the runtime increases quadratically.
 
 
 ### Conclusion
