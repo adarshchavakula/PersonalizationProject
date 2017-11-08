@@ -83,6 +83,10 @@ SVD | 0.2355 | 0.1199
 We tuned the number of factors, the regularization coefficient, and the learning rate of our SVD model to find a more optimal model. Our best model, when using RMSE and MAE as our accuracy metrics, used 120 factors, a regularization coefficient of 0.02, and a learning rate of 0.01.
 
 #### Additonal Design Considerations
+After seeing these results, we would like to see if we can use more computing power to increase the number of artists and complexity of the model. We think this might result in improved results.
+
+We also would like to include more features as part of this model. The dataset came with very limited information about the artists. We believe that including additional information, such as genre or nationality of artist, might add additional value to the model.
+
 #### Model performance with data size
 The model loses quite a bit of accuracy as the data size decreases. However, SVD is not an efficient algorithm, so as the number of artists increases, the amount of time to train the model increases exponentially. This makes it very computationally expensive to update the model.
 
