@@ -133,4 +133,4 @@ We will incorporate timestamps and signup dates to further clarify users’ pref
 * Can we use timestamps and skips to identify the user’s mood (i.e., genre preference given an unspecified activity)?
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
-In addition, we would also like to assess and utlize the value added by metadata like user's location, sex, age and artist genre in our personalization models.
+In addition, we would also like to assess and utilize the value added by metadata like user's location, sex, age and artist genre in our personalization models.
