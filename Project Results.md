@@ -69,7 +69,11 @@ Imputation is not necessary for this model. SVD++ creates an implicit matrix, a 
 ***Final results?***
 
 ### Ensemble
-***How did we combine the results? How did the hybrid do?***
+We can combine the SVD++ model with the neural network in two ways.
+
+Method 1: We can combine the top K recommendations from the SVD++ model with the top K NN predictions with the lowest probability of being skipped.  The user is then shown these top K recommendation half of which incorporate a novelty aspect, while the otehr half from the NN incorporate just the users' historical behavior.
+
+Method 2: After running the SVD++ model and the neural network, we create two skips probability vector for each user-song combination.  We then create a linear combination of these vectors to form our final output vector.  This vector can be thought of as an additional contextual feature about the users, which would be individually incorporated into a larger recommendation system that look at other aspects music personalization.
 
 ## Final Results
 ***Performance (both time and accuracy)***
