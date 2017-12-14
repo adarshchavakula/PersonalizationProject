@@ -8,7 +8,11 @@ In our literature review of various recommendation engines that are based on the
 ### Approach
 ***What did we want to do? What was our plan?***
 
-We chose to build a hybrid model using a neural network and SVD++. The neural network would incorporate recency into the model, identifying how user preferences shift over the duration of the dataset and identifying latent features that affect a user's decision to skip a song. Meanwhile, SVD++ would incorporate periodicity, identifying when a user enjoys a song in a given period. We also believed SVD++ would better capture songs that a user has not yet listened to, or songs in a new period, by identifying similarities in the latent space.
+We chose to build a hybrid model using a neural network and SVD++.
+
+The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history.  Additionally, the neural network identifies latent features that affect a user's decision to skip a song.
+
+Our SVD++ model incorporates periodicity and captures songs that a user has not yet listened, or songs in a new period, by identifying similarities in the latent space.  We have modified our ratings matrix to include skips and to incorporate a period for each song.  The SVD++ approach is a more nuanced version of the SVD baseline model from Part I.  The model adds an implicit user-factor to adjust the explicit user-factor matrix.  This implicit feedback matrix is constructed from the original ratings matrix by identifying which songs the user has skipped in a given period.  
 
 Because both models output a vector of the probability a user will skip a song, we chose to run the models independently and combine the probabilities afterwards, hoping that the combined probability would improve the model's predictive power.
 
