@@ -30,7 +30,9 @@ We continued to use the Last.fm dataset, only this time we did not aggregate to 
 ***High level plan***
 
 ##### SVD++
-We designed a user-song matrix and used the skips as our parameter of interest.  The implicit factor $FY$ is then combined with the user-song latent space to form the reconstructed $(U+FY)V^T$ matrix. 
+We designed a user-song matrix and used the skips as our parameter of interest.  The implicit factor $FY$ is then combined with the user-song latent space to form the reconstructed $(U+FY)V^T$ matrix.  This implies that simply act of skipping a song in a particular period contains significant information about the user's preference and unspecified activity.
+
+In the SVD model from Part I, we used a binary variable for whether the song has been listened by a given user.  Such a derivation of user factors does not discriminate between users who have listened to the same set of songs, but have listened to higher quantities of individual songs.  Two such users will have exactly the same song recommendation by the original SVD model. 
 
 ##### Performance Evaluation
 
