@@ -1,12 +1,18 @@
 # Final Project
 _**NOTE:** high level summary will go into the readme, this is the detailed writeup of our project. Think of this as our academic paper and the high level summary as a one pager._
 ## Introduction
-***Talk about why we are doing this. Why skips?***
+We are designing a recommendation system that incorporates the users’ likelihood to skip a song into the final output.  We have designed a skips parameter based on whether the user has listened to the song for more than 60 seconds.  In other words, if the user stopped listening to the song before the 60 second timepoint, we consider the song to be skipped.
+
+In our literature review of various recommendation engines that are based on the users’ listening habits, we have not encountered an approach that modeled the users’ skip preferences.  We believe this parameter to add significant value as it helps us understand the users’ preference for a song based on an unspecified activity.  It may be that the user has grown tired of the song and no longer wants to hear it, but it can also be the case that the user is in a different listening mood and prefers to listen to something else.  This has been the primary motivation for incorporating skips.
 
 ### Approach
 ***What did we want to do? What was our plan?***
 
-We chose to build a hybrid model using a neural network and SVD++. The neural network would incorporate recency into the model, identifying how user preferences shift over the duration of the dataset and identifying latent features that affect a user's decision to skip a song. Meanwhile, SVD++ would incorporate periodicity, identifying when a user enjoys a song in a given period. We also believed SVD++ would better capture songs that a user has not yet listened to, or songs in a new period, by identifying similarities in the latent space.
+We chose to build a hybrid model using a neural network and SVD++.
+
+The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history.  Additionally, the neural network identifies latent features that affect a user's decision to skip a song.
+
+Our SVD++ model incorporates periodicity and captures songs that a user has not yet listened, or songs in a new period, by identifying similarities in the latent space.  We have modified our ratings matrix to include skips and to incorporate a period for each song.  The SVD++ approach is a more nuanced version of the SVD baseline model from Part I.  The model adds an implicit user-factor to adjust the explicit user-factor matrix.  This implicit feedback matrix is constructed from the original ratings matrix by identifying which songs the user has skipped in a given period.  
 
 Because both models output a vector of the probability a user will skip a song, we chose to run the models independently and combine the probabilities afterwards, hoping that the combined probability would improve the model's predictive power.
 
@@ -24,7 +30,9 @@ We continued to use the Last.fm dataset, only this time we did not aggregate to 
 ***High level plan***
 
 ##### SVD++
-***High level plan***
+We designed a user-song matrix and used the skips as our parameter of interest.  The implicit factor $FY$ is then combined with the user-song latent space to form the reconstructed $(U+FY)V^T$ matrix.  This implies that simply act of skipping a song in a particular period contains significant information about the user's preference and unspecified activity.
+
+In the SVD model from Part I, we used a binary variable for whether the song has been listened by a given user.  Such a derivation of user factors does not discriminate between users who have listened to the same set of songs, but have listened to higher quantities of individual songs.  Two such users will have exactly the same song recommendation by the original SVD model. 
 
 ##### Performance Evaluation
 
@@ -61,7 +69,11 @@ Imputation is not necessary for this model. SVD++ creates an implicit matrix, a 
 ***Final results?***
 
 ### Ensemble
-***How did we combine the results? How did the hybrid do?***
+We can combine the SVD++ model with the neural network in two ways.
+
+Method 1: We can combine the top K recommendations from the SVD++ model with the top K NN predictions with the lowest probability of being skipped.  The user is then shown these top K recommendation half of which incorporate a novelty aspect, while the otehr half from the NN incorporate just the users' historical behavior.
+
+Method 2: After running the SVD++ model and the neural network, we create two skips probability vector for each user-song combination.  We then create a linear combination of these vectors to form our final output vector.  This vector can be thought of as an additional contextual feature about the users, which would be individually incorporated into a larger recommendation system that look at other aspects music personalization.
 
 ## Final Results
 ***Performance (both time and accuracy)***
