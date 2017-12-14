@@ -30,7 +30,7 @@ We continued to use the Last.fm dataset, only this time we did not aggregate to 
 ***High level plan***
 
 ##### SVD++
-***High level plan***
+We designed a user-song matrix and used the skips as our parameter of interest.  The implicit factor $FY$ is then combined with the user-song latent space to form the reconstructed $(U+FY)V^T$ matrix. 
 
 ##### Performance Evaluation
 
