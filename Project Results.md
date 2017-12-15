@@ -77,13 +77,13 @@ In the SVD model from Part I, we used a binary variable for whether the song has
 
 #### Data Structure
 ***From the base dataset, did you do any other data prep?***
-We added a gender int column assigning a 1 or 2 based on the user's gender. 
+We added a gender int column assigning a 1 or 2 based on the user's gender. Otherwise we kept all other characteristics of the csv we created in the feature engineering notebook.
 
 #### Imputation
-***What did you impute? Why? If not, why not? Does that affect the model?***
+Imputation was necessary for the nueral network. We contained many missing values that corresponded to unheard songs by a user. We imputed these values with zeroes. For most features this imputation of zero stood apropriate considering the feature purpose. Regarding the skip related column a zero value meant zero skips. If we only had skip-related columns then it might have been inapropriate to have unheard songs have a value of 0 putting them on par with songs that were listened to fully. However, songs listened to are treated differently than unheard songs in many other columns, and this allowed us to side-step the possible issues associated with our imputation. 
 
 #### Model Exploration
-***So you ran the model. How? What choices did you have to make and why did you make them?***
+We ran the neural network many times adjusting batch size, number of epochs, and the architecture. The chart below shows a few of our runs. We used AUC as evaluation metric to help us choose our parameters. For our final neural network we choose our batch size to be 256, the epock size to be 10, and set up our architecture to have 25 input cariables and 1 neuron in the hidden layer.  
 ![neuralNetworkParam.jpeg](data/neuralNetworkParam.jpeg)
 
 #### Model Results
@@ -94,13 +94,13 @@ We added a gender int column assigning a 1 or 2 based on the user's gender.
 #### Data Structure
 Surprise requires the dataset to be in a tall format, with the matrix set up as _user-song-skipped_. To include periodicity, we need to distinguish the period in which a song was listened while keeping the form required by Surprise. To do this, we concatenated `trackartist` with `period`.
 
-***Provide a preview of the dataframe***
+![](data/period_preview.png)
 
 #### Imputation
-Imputation is not necessary for this model. SVD++ creates an implicit matrix, a binary of whether or not a user has listened to a song in a period. This implicit matrix captures the missing values.
+We do not impute values in the SVD++ model as it automatically generates an implicit user-song matrix.  This is a binary of whether or not a user has listened the song in a given period.  This implicit matrix captures the missing values.
 
 #### Model Exploration
-***So you ran the model. How? What choices did you have to make and why did you make them?***
+We concatenated the period with the song name to incorporate a time factor in the SVD++ algorithm.  This way the model predicts whether the user is likely to skip an individual song during a given period.  The song name and period were combined with three underscores between them.  Afterwards, when we were splitting the predictions dataset to calculate AUC, we dropped several song names because they contained three underscores within the name.
 
 #### Model Results
 ***Final results?***
