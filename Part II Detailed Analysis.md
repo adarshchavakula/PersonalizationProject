@@ -8,16 +8,27 @@ In our review of various recommendation engines that are based on users’ liste
 ### Approach
 We chose to build a hybrid model using a neural network and SVD++.
 
-The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. Additionally, the neural network identifies latent features that affect the users' decision to skip a song.
+The neural network incorporates user's past preferences and recency into the model, identifying how user preferences shift over the duration of their listening history. Additionally, the neural network identifies the factors that affect the users' decision to skip a song.
 
 Our SVD++ model incorporates periodicity. It also incorporates songs that the user has not yet heard, or songs in a new period, by identifying similarities in the latent space. We modified our ratings matrix to include skips and to incorporate a period for each song: whether or not it was the weekend. The SVD++ approach is a more complex version of the SVD baseline model from Part I. The model adds an implicit user-factor matrix to adjust the explicit user-factor matrix.
 
 Since both models output a vector of the probability a user will skip a song, we chose to run the models independently and combine the probabilities afterwards, hoping that the combined probability would improve the model's accuracy.
 
 ### Data
-We continued to use the Last.fm dataset, only this time we did not aggregate to the artist level. We kept the data in its disaggregated form, in which each row is an observation of a user listening to a song at a given time. We engineered features to add to this data, mostly using `timestamp`.
+We continued to use the Last.fm dataset, only this time we did not aggregate to the artist level. We kept the data in its disaggregated form, in which each row is an observation of a user listening to a song at a given time. 
 
-##### Feature Engineering
+The dataset contained over 170K unique tracks and 1K users. However a large number of these songs are never listened to more than a handful of times across all the users in the entire dataset. To prune this down, we considered the top 500 songs listened by each user for our analysis. 
+
+We engineered features to add to this data, mostly using `timestamp`.
+
+
+### Model Evaluation Strategy
+We split our dataset into train, validation and testing datasets. **The split was done based on timestamps**. The training data contained the first 70% of each user's listening history. The validation set has the next 15% and the testing set has the final 15% of the history. 
+
+The models were trained on the training data, tuned using the evaluation data and the performance is finally reported based on predicitons on the test data.
+
+
+### Feature Engineering
 Our base data set contained the complete listening history of 1K users. Using that we engineered the features described below. All feature engineering was done in a cumulative manner **incorporating only past data at each point**. This was done to ensure that there is **no leakage of data from the future** for prediction purposes.
 
 ###### Timestamp Columns:
@@ -65,7 +76,7 @@ Our base data set contained the complete listening history of 1K users. Using th
 We added a gender column assigning a 1 or 2 index based on the user's gender. Otherwise, we kept all other characteristics of the csv we created in the [Feature Engineering notebook](code/Feature Engineering.ipynb).
 
 #### Imputation
-Imputation was necessary for the neural network. There were many missing observations from songs new to a user. We imputed these values with zeroes. For most features, this imputation of zero is apropriate considering the feature's purpose. In the skip related column, a zero value means no skips. If we only had skip-related columns, then it might have been inapropriate to have new songs have a value of 0, as that would put them on par with songs that were listened to fully. However, songs listened to are treated differently than unheard songs in many other columns, and this allowed us to avoid the possible issues associated with our imputation. 
+Imputation was necessary for the neural network as it can't handle missing values. Missing values primarily arise in the validation/test set for new artists of songs that the user listens to. We imputed these values with zeroes. For most features, this imputation of zero is appropriate considering the feature's purpose. In the skip related column, a zero value means no skips. 
 
 #### Model Tuning
 We trained the neural network using a validation set and tuned batch size, number of epochs, and the architecture. The chart below shows a few of our hyperparameters. We used AUC as evaluation metric for the validation set to help us choose our parameters. 
@@ -79,6 +90,8 @@ We also experimented with the choice of optimizer. Moving from SGD to AdaGrad ga
 #### Model Results
 
 The final model has a validation AUC of **0.705** and test AUC of **0.68**. 
+
+This is lower than the benchmark AUC of 0.759. The primary reason for this the way we engineered our features. We used a cumulative strategy for all variables to avoid drawing any inferences from future timestamps resulting in data leakage. This feature engineering strategy implies that the training data contains many data points for which the user's complete behavior is not fully noted (for example the first few days of usage). Since these points are also used in the training of the model, the predictions are of a lower quality.
 
 ### SVD++ Implementation
 
