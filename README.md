@@ -129,7 +129,7 @@ While the neighborhood-based CF used a different data structure than the model-b
 ## Part II Objective
 
 We incorporated timestamps to further clarify users’ preferences for artists and tracks.  Based on this data points, we have derived a skips parameter (i.e., difference between start time and end time for a song).  This parameter indicates whether the user skipped to the next track in the playlist and will help us answer questions such as:
-* Can skips be used to improve music recommendation?
+* Can music recommendation be improved by incorporating skips?
 * Can we use timestamps and skips to identify the user’s mood (i.e., genre preference given an unspecified activity)?
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
