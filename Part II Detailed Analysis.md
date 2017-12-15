@@ -67,10 +67,18 @@ We added a gender column assigning a 1 or 2 index based on the user's gender. Ot
 #### Imputation
 Imputation was necessary for the neural network. There were many missing observations from songs new to a user. We imputed these values with zeroes. For most features, this imputation of zero is apropriate considering the feature's purpose. In the skip related column, a zero value means no skips. If we only had skip-related columns, then it might have been inapropriate to have new songs have a value of 0, as that would put them on par with songs that were listened to fully. However, songs listened to are treated differently than unheard songs in many other columns, and this allowed us to avoid the possible issues associated with our imputation. 
 
-#### Model Exploration/Results
-We trained the neural network using a validation set and tuned batch size, number of epochs, and the architecture. The chart below shows a few of our hyperparameters. We used AUC as evaluation metric for the validation set to help us choose our parameters. For our final neural network, we used a batch size of 256, epoch size 10, and used 25 input variables and 1 neuron in the hidden layer.
+#### Model Tuning
+We trained the neural network using a validation set and tuned batch size, number of epochs, and the architecture. The chart below shows a few of our hyperparameters. We used AUC as evaluation metric for the validation set to help us choose our parameters. 
 
 ![neuralNetworkParam.jpeg](data/neuralNetworkParam.jpeg)
+
+We observed that the model was very sensitive to overfitting and increasing the complexitiy resulted in deterioration of the validation AUC. So decided to keep the model simple. 
+
+We also experimented with the choice of optimizer. Moving from SGD to AdaGrad gave a significant lift to the AUC. Our final model has one hidden layer with 2 neurons with ReLU activation trained with AdaGrad optimizer for 5 epochs of batch size 256.  
+
+#### Model Results
+
+The final model has a validation AUC of **0.705** and test AUC of **0.68**. 
 
 ### SVD++ Implementation
 
