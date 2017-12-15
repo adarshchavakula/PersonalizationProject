@@ -94,7 +94,7 @@ We ran the neural network many times adjusting batch size, number of epochs, and
 #### Data Structure
 Surprise requires the dataset to be in a tall format, with the matrix set up as _user-song-skipped_. To include periodicity, we need to distinguish the period in which a song was listened while keeping the form required by Surprise. To do this, we concatenated `trackartist` with `period`.
 
-![period_preview.png = 300x200](data/period_preview.png)
+![period_preview.png = 100x50](data/period_preview.png)
 
 #### Imputation
 Imputation is not necessary for this model. SVD++ creates an implicit matrix, a binary of whether or not a user has listened to a song in a period. This implicit matrix captures the missing values.
