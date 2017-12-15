@@ -17,12 +17,10 @@ Our SVD++ model incorporates periodicity and captures songs that a user has not 
 Because both models output a vector of the probability a user will skip a song, we chose to run the models independently and combine the probabilities afterwards, hoping that the combined probability would improve the model's predictive power.
 
 ### Data
-***Introduce the data, maybe provide some summary stats?***
 
 We continued to use the Last.fm dataset, only this time we did not aggregate to the artist level. We instead kept the data in its disaggregated form, where each row is an observation of a user listening to a song at a given time. We engineered features to add to this data, mostly using the timestamp.
 
 ##### Feature Engineering
-***Show new features and how we engineered them, particularly the predicted variable.***
 Within our Feature Engineering file you are able to see all the 24 features we created from out base data set. 
 
 ###### Timestamp Columns:
@@ -118,6 +116,6 @@ Method 2: After running the SVD++ model and the neural network, we create two sk
 ***Would we use this? Does this model perform better on some users/songs than others?***
 
 ## Lessons
-We restricted our SVD++ model to a single periodicity parameter (whether the song was listened to on a weekend or a weekday) as the size of the dataset grows rapidly with additional features.  If we had more computing power, then we could incorporate additional periodicity parameters (e.g., daytime, month, and holidays).  We could also look at whether the user had "repeated" the song by creating an indicator if the same song appears twice sequentially in our dataset.  This would be a feature independent from the skips parameter, which could be subsequently fed into a broader recommendation system as a probability input vector.
+We restricted our SVD++ model to a single periodicity parameter (whether the song was listened to on a weekend or a weekday) as the size of the dataset grows rapidly with additional features.  If we had more computing power, then we could incorporate additional periodicity parameters (e.g., daytime, month, and holidays) and we could also tune our hyperparameters in the SVD++ model.  We could also look at whether the user had "repeated" the song by creating an indicator if the same song appears twice sequentially in our dataset.  This would be a feature independent from the skips parameter, which could be subsequently fed into a broader recommendation system as a probability input vector.
 
 Additionally, we experimented with using Spark.  We originally decided on Spark because data engineering in Pandas is not always feasible since commercial datasets tend to be very large.  However, we found the setup process to be entirely different for Windows and macOS users.  As a result, we could not use consistent methods throughout our implementation.  Moreover, Spark has a steep learning curve for feature engineering.  We invested a significant amount of time to format our dataset and add new features – a process that is straightforward in Pandas.  Additionally, Spark libraries do not have a full implementation of the SVD++ algorithm.  We attempted to craft the algorithm from scratch using matrix factorization and stochastic gradient descent operations, but found it prohibitive to experiment with hyperparameters given the size of the dataset. We managed to implement the Neural Network on Spark (ml library's multi-layer perceptron implementation) but the setup was not configured appropriately for our local machines so the model would not train. We finally resorted to using Tensorflow for the NN.

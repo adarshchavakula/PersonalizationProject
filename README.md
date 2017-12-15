@@ -128,9 +128,9 @@ While the neighborhood-based CF used a different data structure than the model-b
 
 ## Part II Objective
 
-We incorporated timestamps to further clarify users’ preferences for artists and tracks.  Based on this data points, we have derived a skips parameter (i.e., difference between start time and end time for a song).  This parameter indicates whether the user skipped to the next track in the playlist and will help us answer questions such as:
+We incorporated timestamps to further clarify users’ preferences for artists and tracks.  Based on these data points, we have derived a skips parameter (i.e., the difference between start time and end time for a song is less than a minute). This parameter indicates whether the user skipped to the next track in the playlist. The information derived from skip related features and predicted skip values could help us answer questions such as:
 * Can music recommendation be improved by incorporating skips?
-* Can we use timestamps and skips to identify the user’s mood (i.e., genre preference given an unspecified activity)?
+* Can we use timestamps and skips to identify the user’s mood in a given time period (i.e., genre preference given certain time of day)?
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
-We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history.  The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space.
+We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. For more information look to the Project Results file.
