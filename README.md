@@ -9,9 +9,9 @@ Last.fm data set contains:
 * 173,921 artists with timestamped entries
 * Metafile containing user profiles (e.g., gender, age, country and signup date).
 
-The data set can be found through this [link](http://www.dtic.upf.edu/~ocelma/MusicRecommendationDataset/lastfm-1K.html). The data was collected by Òscar Celma.
+The dataset can be found through this [link](http://www.dtic.upf.edu/~ocelma/MusicRecommendationDataset/lastfm-1K.html). The data was collected by Òscar Celma.
  
-The data set records users’ listening history without recording explicit feedback on artist and track pairs.  As there is no input from a user on whether they liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
+The dataset records users’ listening history without recording explicit feedback on artist and track pairs.  As there is no input from a user on whether they liked or disliked a track, we initially treat the data as an indication of positive preference. This will be expanded to include skips for the full recommender system.
 
 A preview of the data is shown here, with the leftmost column as the Pandas index:
 ![Data Preview](data/DataPreview.png)
@@ -23,10 +23,10 @@ The following is the play counts for the entire data set, grouped by hour of the
 We are interested in learning how neighborhood- and model-based collaborative filters (CF) perform on aggregated data. These CF approaches help us understand how an improved recommendation engine can drive increased user engagement within a music platform.  We intend to utilize timestamps for the final project along with other metadata to improve the quality of our recommendations.
 
 ### PartI Models Used : Neighborhood Collaboritive Filtering & SVD
-We implemented an neighborhood based collaorative filtering techniqu for our user-based CF and implemented the SVD algorithm as our model-based CF. With both these models we predicted values indicating whether a user would listen to a particualr artist. For more information look to the Part I Detailed file.
+We implemented a neighborhood based collaorative filtering technique for our user-based CF and implemented the SVD algorithm as our model-based CF. With these two models we predicted values indicating whether a user would listen to a particualr artist. For more information look to the Part I detail file.
 
 ### Conclusion of Part I
-The neighborhood-based collaborative filter results in a better RMSE at higher values of k, but does not bring MAE to a competitive level when compared to the baseline model. On the other hand, the SVD model-based collaborative filter outperforms the baseline at almost every comparison. Our initial results of this analysis suggests that SVD model would be more effective at predicting user preferences. We believe this model would be helpful for a draft recommender system.
+The neighborhood-based collaborative filter results in a better RMSE at higher values of K, but does not bring MAE to a competitive level when compared to the baseline model. On the other hand, the SVD model-based collaborative filter outperforms the baseline at almost every comparison. Our initial results of this analysis suggests that SVD model would be more effective at predicting user preferences. We believe this model would be helpful for a draft recommender system.
 
 ## Part II Objective
 
@@ -36,7 +36,7 @@ We incorporated timestamps to further clarify users’ preferences for artists a
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
 ### PartII Models Used : Nueral Network & SVD++ Ensemble
-We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. We combined these two models into a linear ensemble with 90% SVD++ and 10% Neural Network. For more information look to the Part II Detailed file. 
+We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. We combined these two models into a linear ensemble with 90% SVD++ and 10% Neural Network. For more information look to the Part II detail file. 
 
 ### Conclusion of Part II
-The Neural Netowrk was able to train in a matter of minutes with many features, while the SVD++ model trained over many hours with only a few features. However, our SVD++ model significantly outpeformed the neural network model. Due to this we weighted the SVD model as 90% of our combined liear enseble and the neuroal network as only 10% of the combined linear ensemble. The AUC from the linear enseble (at 0.808) we created is marginally higher than the SVD++ standalone AUC (at 0.807 ) and significantly higher than the Neural Network AUC (at 0.609). An AUC of 0.8 tell us that we could use our ensemble model or simply the SVD++ for reccomendation in a professional setting. 
+The neural network trains in a matter of minutes with a multitude of features, while the SVD++ model trained over many hours with only a two features. Nevertheless, our SVD++ model significantly outpeformed the neural network. As a result, we weighted the SVD model as 90% of our combined linear ensemble and gave 10% weights to the neural network. The AUC from the linear ensemble (at 0.808) is marginally higher than the SVD++ standalone AUC (at 0.807), but is significantly higher than the neural network AUC (at 0.609). An AUC of 0.8 tells us that we can leverage our ensemble model for music recommendations in a commercial setting. 
