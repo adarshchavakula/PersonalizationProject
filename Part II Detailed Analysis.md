@@ -18,7 +18,7 @@ Since both models output a vector of the probability a user will skip a song, we
 We continued to use the Last.fm dataset, only this time we did not aggregate to the artist level. We kept the data in its disaggregated form, in which each row is an observation of a user listening to a song at a given time. We engineered features to add to this data, mostly using `timestamp`.
 
 ##### Feature Engineering
-Within our Feature Engineering file you are able to see all the 24 features we created from out base data set. 
+Our base data set contained the complete listening history of 1K users. Using that we engineered the features described below. All feature engineering was done in a cumulative manner **incorporating only past data at each point**. This was done to ensure that there is **no leakage of data from the future** for prediction purposes.
 
 ###### Timestamp Columns:
 
@@ -52,7 +52,7 @@ Within our Feature Engineering file you are able to see all the 24 features we c
 * global-song-skip-percentage (`global-song-skips`/`song_total_count`)
 * global-artist-skip-percentage (`global-artist-skips`/`song_total_count`)
 
-###### Other Columns:
+###### Other Columns - from metadata:
 
 * age (age of user)
 * gender (gender of user)
