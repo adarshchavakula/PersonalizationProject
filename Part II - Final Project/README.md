@@ -81,7 +81,7 @@ Imputation was necessary for the neural network as it can't handle missing value
 #### Model Tuning
 We trained the neural network using a validation set and tuned batch size, number of epochs, and the architecture. The chart below shows a few of our hyperparameters. We used AUC as evaluation metric for the validation set to help us choose our parameters. 
 
-![neuralNetworkParam.jpeg](data/neuralNetworkParam.jpeg)
+![neuralNetworkParam.jpeg](https://github.com/adarshchavakula/PersonalizationProject/data/neuralNetworkParam.jpeg)
 
 We observed that the model was very sensitive to overfitting and increasing the complexitiy resulted in deterioration of the validation AUC. So decided to keep the model simple. 
 
@@ -121,7 +121,7 @@ We created an ensemble of the two models - SVD++ and the Neural Network to obtai
 
 Our method of ensembling the model is to use a simple linear combination of the predicitons from both the models.
 
-![Ensemble contribution](data/ensemble.png)
+![Ensemble contribution](https://github.com/adarshchavakula/PersonalizationProject/data/ensemble.png)
 
 We looked at different weghted averages of the model to assess the relative performace. Based on the observations, we decided to use an ensemble with 90% SVD++ contribution and 10% NN contribution for the final model.
 
