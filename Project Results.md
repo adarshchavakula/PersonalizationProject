@@ -84,6 +84,7 @@ We added a gender int column assigning a 1 or 2 based on the user's gender.
 
 #### Model Exploration
 ***So you ran the model. How? What choices did you have to make and why did you make them?***
+![neuralNetworkParam.jpeg](data/neuralNetworkParam.jpeg)
 
 #### Model Results
 ***Final results?***
