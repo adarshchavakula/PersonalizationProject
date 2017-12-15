@@ -114,6 +114,8 @@ SVD++ Weight | NN Weight | Ensemble AUC
 0.95 | 0.05 | 0.811
 1.00 | 0.00 | 0.807
 
+![Ensemble contribution](data/ensemble.png)
+
 ## Final Results
 The neural network trains in a matter of minutes with a multitude of features, while the SVD++ model required several hours to train with only two features. Our SVD++ model significantly outpeformed the neural network model, which is why we weighted the SVD++ model as 90% of our combined linear ensemble. The neural network is 10% of the combined linear ensemble.
 
