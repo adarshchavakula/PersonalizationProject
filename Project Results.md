@@ -23,10 +23,19 @@ We continued to use the Last.fm dataset, only this time we did not aggregate to 
 
 ##### Feature Engineering
 ***Show new features and how we engineered them, particularly the predicted variable.***
-Within our Feature Engineering file you are able to see all the 27 features we created from out base data set. 
+Within our Feature Engineering file you are able to see all the 24 features we created from out base data set. 
 
 ###### Timestamp Colmumns
-  	* time of day, day of week, week vs weekday, quarter, month, last seen artist and all skip columns .
+  	* daytime (morning,afternoon, evening, etc; there are 5 time blocks)
+	* day of week (monday= 0, tuesday = ,... sunday = 6)
+	* weekday  
+	* hour
+	* weekend
+	* quarter (fall, spring, summer, winter)
+	* month
+	* last seen song (last seen song by a user)
+	* last seen artist (last seen artist by a user)
+	
 ###### Count Columns: 
  	* track-weekday-count (count of times a song was listened to by the user over the weekday)
 	* user-artist-weeday-count (count of times an artist was listened to by the user over the weekday)
@@ -35,6 +44,7 @@ Within our Feature Engineering file you are able to see all the 27 features we c
   	* song_total_count (cumulative count of times a song was listened to by all users)
   	* user-artist-count (cumulative count of times a song was listened to by a particular user) 
 	* user-track-total-count (cumulative count of times an artist was listened to by a particular user)
+
 ###### Skip Columns:
 	* user-song-skips (for each user cumulative skip per song counts, a skip is a song listened to for less than 1 minute)
 	* user-artist-skips (for each user cumulative skip per song counts)
@@ -44,6 +54,9 @@ Within our Feature Engineering file you are able to see all the 27 features we c
 	* global-artist-skips (cumulative count of times an artist was skipped over all users)
 	* global-song-skip-percentage (global-song-skips/song_total_count)
 	* global-artist-skip-percentage (global-artist-skips/song_total_count)
+###### Other Columns:
+	# age (age of user)
+	# gender (gender of user)
 
 
 ### Models
