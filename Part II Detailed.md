@@ -112,8 +112,10 @@ Method 2: After running the SVD++ model and the neural network, we create two sk
 
 ## Final Results
 ***Performance (both time and accuracy)***
+The Neural Netowrk was able to train in a matter of minutes with many features, while the SVD++ model trained over many hours with only a few features. However, our SVD++ model significantly outpeformed the neural network model. Due to this we weighted the SVD model as 90% of our combined liear enseble and the neuroal network as only 10% of the combined linear ensemble. The AUC from the linear enseble (at 0.808) we created is marginally higher than the SVD++ standalone AUC (at 0.807 ) and significantly higher than the Neural Network AUC (at 0.609). An AUC of 0.8 tell us that we could use our ensemble model or simply the SVD++ for reccomendation in a professional setting. 
 
-***Would we use this? Does this model perform better on some users/songs than others?***
+***Would we use this? Does this model perform better on some users/songs than others?*** 
+The Neural Netowrk was only able to capture predicted skip values for songs previously heard by the user while the SVD++ was able to make novel predictions. Since the ensemble consisted of 90% of the SVD++ model we were able to include a large numer of skip predictions for novel songs. 
 
 ## Lessons
 We restricted our SVD++ model to a single periodicity parameter (whether the song was listened to on a weekend or a weekday) as the size of the dataset grows rapidly with additional features.  If we had more computing power, then we could incorporate additional periodicity parameters (e.g., daytime, month, and holidays) and we could also tune our hyperparameters in the SVD++ model.  We could also look at whether the user had "repeated" the song by creating an indicator if the same song appears twice sequentially in our dataset.  This would be a feature independent from the skips parameter, which could be subsequently fed into a broader recommendation system as a probability input vector.
