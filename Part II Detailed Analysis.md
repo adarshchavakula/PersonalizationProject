@@ -104,9 +104,17 @@ Our method of ensembling the model is to use a simple linear combination of the 
 
 We looked at different weghted averages of the model to assess the relative performace. Based on the observations, we decided to use an ensemble with 90% SVD++ contribution and 10% NN contribution for the final model.
 
-Method 1: We combine the top K recommendations from the SVD++ model with the top K NN predictions, where the top songs are those with the lowest probability of being skipped.  The user is then shown these top K recommendation, half of which incorporate a novelty aspect and the other half incorporate the users' historical behavior.
 
-Method 2: After running the SVD++ model and the neural network, we create two skip probability vectors for each user-song combination.  We then use a linear combination of these vectors to form our final output vector.  This vector can be thought of as an additional contextual feature about the users, which would be individually incorporated into a larger recommendation system that looks at other aspects music personalization.
+
+## Model Utility
+
+Music recommendation involves numerous problems and we tried to address one of them in this project - likelihood of users skipping songs. The ensemble model predicts this probability for the users for a given song. The two models in the ensemble address this in distinct ways - The Neural Network is trained on the historical behavior of the users and the SVD++ looks at a broader scope of identifying similarities between users. 
+
+The model can be utilized in two ways in a commercial music personalization setting:
+
+**Method 1 - Standalone** : We recommend the top K recommendations from the model to a user, where the top songs are those with the lowest probability of being skipped. The model incorporates both the user's historic preferences and behavior as well as novel predictions based on the preference of similar users. 
+
+**Method 2 - Broader Personalization System** : The ensemble enables us to create a probability vector for each user-song combination. This vector can be thought of as an additional contextual feature about the users, which would be incorporated into a larger recommendation system that looks at other aspects music personalization.
 
 
 
