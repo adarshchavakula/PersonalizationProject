@@ -23,7 +23,7 @@ The following is the play counts for the entire data set, grouped by hour of the
 We are interested in learning how neighborhood- and model-based collaborative filters (CF) perform on aggregated data. These CF approaches help us understand how an improved recommendation engine can drive increased user engagement within a music platform.  We intend to utilize timestamps for the final project along with other metadata to improve the quality of our recommendations.
 
 ### PartI Models Used : Neighborhood Collaboritive Filtering & SVD
-We implemented an neighborhood based collaorative filtering techniqu for our user-based CF and implemented the SVD algorithm as our model-based CF. With both these models we predicted values indicating whether a user would listen to a particualr artist.
+We implemented an neighborhood based collaorative filtering techniqu for our user-based CF and implemented the SVD algorithm as our model-based CF. With both these models we predicted values indicating whether a user would listen to a particualr artist. For more information look to the PartIDetailed file.
 
 ### Conclusion of Part I
 The neighborhood-based collaborative filter results in a better RMSE at higher values of k, but does not bring MAE to a competitive level when compared to the baseline model. On the other hand, the SVD model-based collaborative filter outperforms the baseline at almost every comparison. Our initial results of this analysis suggests that SVD model would be more effective at predicting user preferences. We believe this model would be helpful for a draft recommender system.
@@ -36,6 +36,6 @@ We incorporated timestamps to further clarify users’ preferences for artists a
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
 ### PartII Models Used : Nueral Network & SVD++
-We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. For more information look to the Project Results file.
+We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. For more information look to the PartII Project Results file.
 
 ### Conclusion of Part II
