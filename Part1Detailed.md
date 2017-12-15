@@ -126,11 +126,4 @@ On the other hand, the model-based collaborative filter outperforms the baseline
 
 While the neighborhood-based CF used a different data structure than the model-based CF, this is due to the nature of the models.  The comparison to the baseline is a better indicator of model performance than the comparison to each other.
 
-## Part II Objective
 
-We will incorporate timestamps and signup dates to further clarify users’ preferences for artists and tracks.  Based on these data points, we can derive a skips parameter.  This parameter indicates whether the user skipped to the next track in the playlist and will help us answer questions such as:
-* Can skips be used to improve music recommendation?
-* Can we use timestamps and skips to identify the user’s mood (i.e., genre preference given an unspecified activity)?
-* After how many times of listening to a track is a user more likely to start skipping the track?
-
-In addition, we would also like to assess and utilize the value added by metadata like user's location, sex, age and artist genre in our personalization models.
