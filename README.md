@@ -35,7 +35,8 @@ We incorporated timestamps to further clarify users’ preferences for artists a
 * Can we use timestamps and skips to identify the user’s mood in a given time period (i.e., genre preference given certain time of day)?
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
-### PartII Models Used : Nueral Network & SVD++
-We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. For more information look to the Part II Detailed file.
+### PartII Models Used : Nueral Network & SVD++ Ensemble
+We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. We combined these two models into a linear ensemble with 90% SVD++ and 10% Neural Network. For more information look to the Part II Detailed file. 
 
 ### Conclusion of Part II
+The AUC from the linear enseble we created is marginally higher than the SVD++ standalone AUC and significantly higher than the Neural Network AUC. 
