@@ -19,24 +19,29 @@ A preview of the data is shown here, with the leftmost column as the Pandas inde
 The following is the play counts for the entire data set, grouped by hour of the day (left) and day of the week (right):
 ![Play Counts by hour of day and day of week](data/PlayCounts.png)
 
-## Part I Objective
-We are interested in learning how neighborhood- and model-based collaborative filters (CF) perform on aggregated data. These CF approaches help us understand how an improved recommendation engine can drive increased user engagement within a music platform.  We intend to utilize timestamps for the final project along with other metadata to improve the quality of our recommendations.
+## Part I
 
-### PartI Models Used : Neighborhood Collaboritive Filtering & SVD
-We implemented a neighborhood based collaorative filtering technique for our user-based CF and implemented the SVD algorithm as our model-based CF. With these two models we predicted values indicating whether a user would listen to a particualr artist. For more information look to the Part I detail file.
+###Objective
+We were interested in learning how neighborhood- and model-based collaborative filtering (CF) algorithms perform on aggregated data. These CF approaches help us understand how an improved recommendation engine can drive increased user engagement within a music platform.  We then utilized timestamps for the final project along with other metadata to improve the quality of our recommendations.
 
-### Conclusion of Part I
-The neighborhood-based collaborative filter results in a better RMSE at higher values of K, but does not bring MAE to a competitive level when compared to the baseline model. On the other hand, the SVD model-based collaborative filter outperforms the baseline at almost every comparison. Our initial results of this analysis suggests that SVD model would be more effective at predicting user preferences. We believe this model would be helpful for a draft recommender system.
+### Models: Neighborhood Collaborative Filtering and SVD
+We implemented a neighborhood based collaorative filtering technique for our user-based CF and implemented the SVD algorithm as our model-based CF. With these two models we predicted values indicating whether a user would listen to a particular artist. For more information, please read [Part I detail](Part I Detailed.md).
 
-## Part II Objective
+### Conclusion
+The neighborhood-based collaborative filter results in a better RMSE at higher values of K, but does not bring MAE to a competitive level when compared to the baseline model. On the other hand, the SVD model-based collaborative filter outperforms the baseline at almost every comparison. Our results suggest that the SVD model would be more effective at predicting user preferences. We believe this model would be helpful for a draft recommender system.
 
-We incorporated timestamps to further clarify users’ preferences for artists and tracks.  Based on these data points, we have derived a skips parameter (i.e., the difference between start time and end time for a song is less than a minute). This parameter indicates whether the user skipped to the next track in the playlist. The information derived from skip related features and predicted skip values could help us answer questions such as:
+## Part II
+
+### Objective
+
+We incorporated `timestamp` to further clarify users’ preferences for artists and tracks.  Based on these data points, we have derived a skips parameter. This parameter indicates whether the user skipped a song (i.e. clicked next in the Last.fm platform). The information from predicted skip values could help us answer questions such as:
+
 * Can music recommendation be improved by incorporating skips?
-* Can we use timestamps and skips to identify the user’s mood in a given time period (i.e., genre preference given certain time of day)?
+* Can we use timestamps and skips to identify the user’s mood in a given time period (i.e., genre preference given a certain time of day)?
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
-### PartII Models Used : Nueral Network & SVD++ Ensemble
-We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space. We combined these two models into a linear ensemble with 90% SVD++ and 10% Neural Network. For more information look to the Part II detail file. 
+### Model: Neural Network and SVD++ Ensemble
+We used a hybrid approach, combing a neural network and a temporal SVD++ model.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history. The SVD++  model incorporates periodicity, identifying whether a user is listening to a song during the week or over the weekend. The SVD++ model also brings in a collaborative filtering component, identifying similarities between user-song pairs in the latent space to predict probability of skipping a song a user has not listened to before. We created the ensemble through a linear combination of these two models, with 90% SVD++ and 10% Neural Network. For more information, please read [Part II detail](Part II Detailed.md).
 
-### Conclusion of Part II
-The neural network trains in a matter of minutes with a multitude of features, while the SVD++ model trained over many hours with only a two features. Nevertheless, our SVD++ model significantly outpeformed the neural network. As a result, we weighted the SVD model as 90% of our combined linear ensemble and gave 10% weights to the neural network. The AUC from the linear ensemble (at 0.808) is marginally higher than the SVD++ standalone AUC (at 0.807), but is significantly higher than the neural network AUC (at 0.609). An AUC of 0.8 tells us that we can leverage our ensemble model for music recommendations in a commercial setting. 
+### Conclusion
+The neural network trains in a matter of minutes with a multitude of features, while the SVD++ model required several hours to train with only two features. Nevertheless, our SVD++ model significantly outpeformed the neural network. As a result, we weighted the SVD model as 90% of our combined linear ensemble and gave 10% weights to the neural network. The AUC from the ensemble, **0.808**, is marginally higher than the SVD++ standalone AUC, **0.807**. The ensemble is significantly higher than the neural network AUC, **0.609**. An AUC of 0.8 suggests that we can leverage our ensemble model for music recommendations in a commercial setting. 
