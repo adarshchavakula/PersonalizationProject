@@ -84,6 +84,7 @@ We added a gender int column assigning a 1 or 2 based on the user's gender.
 
 #### Model Exploration
 ***So you ran the model. How? What choices did you have to make and why did you make them?***
+We ran the neural network many times adjusting batch size, number of epochs, and the architecture. The chart below shows a few of our runs. We used AUC as evaluation metric to help us choose our parameters. For our final neural network we choose our batch size to be 256, the epock size to be 10, and set up our architecture to have 25 input cariables and 1 neuron in the hidden layer.  
 ![neuralNetworkParam.jpeg](data/neuralNetworkParam.jpeg)
 
 #### Model Results
