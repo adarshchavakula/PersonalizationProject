@@ -84,7 +84,7 @@ Imputation was necessary for the nueral network. We contained many missing value
 
 #### Model Exploration
 We ran the neural network many times adjusting batch size, number of epochs, and the architecture. The chart below shows a few of our runs. We used AUC as evaluation metric to help us choose our parameters. For our final neural network we choose our batch size to be 256, the epock size to be 10, and set up our architecture to have 25 input cariables and 1 neuron in the hidden layer.  
-![neuralNetworkParam.jpeg|512x397,20%](data/neuralNetworkParam.jpeg)
+![neuralNetworkParam.jpeg|400x300,20%](data/neuralNetworkParam.jpeg)
 
 #### Model Results
 ***Final results?***
