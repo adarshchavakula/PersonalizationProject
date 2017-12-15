@@ -60,7 +60,9 @@ Within our Feature Engineering file you are able to see all the 24 features we c
 ### Models
 
 ##### Neural Network
-***High level plan***
+We used a neural network to predict if a user will skip a given song or listen to it fully. For this we engineered features (described in the section above) and trained for skips in a supervised fashion. We used Tensorflow to accomplish the network training. The network architecture is a fully-connected feed-forward neural network. We have only one hidden layer with just 2 neurons and a ReLU (Rectified Linear Unit) activation. The output layer has a sigmoid activation to return probabilities between 0 and 1. We initially used Stochastic Gradient Descent (SGD) as our optimizer but switched to AdaGrad as it provided better results.
+
+We started with a simple neural network with just 1 neuron in the hidden layer and a small number of epochs. We tried to increase the complexity of the model by increasing the depth of the network (adding more layers) and increasing the number of neurons. We realized that the model starts to quickly overfit and the validation set AUC deteriorates rapidly. We finally settled for 2 neurons and 5 epochs. Although the number of epochs are small, the Bbatch size is kept small (256), so there are a large number of gradient computations per epoch.
 
 ##### SVD++
 We designed a user-song matrix and used the skips as our parameter of interest.  The implicit factor $FY$ is then combined with the user-song latent space to form the reconstructed $(U+FY)V^T$ matrix.  This implies that simply act of skipping a song in a particular period contains significant information about the user's preference and unspecified activity.
