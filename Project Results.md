@@ -77,13 +77,12 @@ In the SVD model from Part I, we used a binary variable for whether the song has
 
 #### Data Structure
 ***From the base dataset, did you do any other data prep?***
-We added a gender int column assigning a 1 or 2 based on the user's gender. 
+We added a gender int column assigning a 1 or 2 based on the user's gender. Otherwise we kept all other characteristics of the csv we created in the feature engineering notebook.
 
 #### Imputation
-***What did you impute? Why? If not, why not? Does that affect the model?***
+Imputation was necessary for the nueral network. We contained many missing values that corresponded to unheard songs by a user. We imputed these values with zeroes. For most features this imputation of zero stood apropriate considering the feature purpose. Regarding the skip related column a zero value meant zero skips. If we only had skip-related columns then it might have been inapropriate to have unheard songs have a value of 0 putting them on par with songs that were listened to fully. However, songs listened to are treated differently than unheard songs in many other columns, and this allowed us to side-step the possible issues associated with our imputation. 
 
 #### Model Exploration
-***So you ran the model. How? What choices did you have to make and why did you make them?***
 We ran the neural network many times adjusting batch size, number of epochs, and the architecture. The chart below shows a few of our runs. We used AUC as evaluation metric to help us choose our parameters. For our final neural network we choose our batch size to be 256, the epock size to be 10, and set up our architecture to have 25 input cariables and 1 neuron in the hidden layer.  
 ![neuralNetworkParam.jpeg](data/neuralNetworkParam.jpeg)
 
