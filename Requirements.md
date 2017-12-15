@@ -10,3 +10,5 @@ The following python packages are required for running the codes:
 4. Matplotlib - plots
 5. Seaborn - plots
 6. Surprise - model-based algorithms
+7. Tensorflow - deep learning
+8. PySpark - for the attempted SVD++ and NeuralNet using Spark
