@@ -100,7 +100,7 @@ Surprise requires the dataset to be in a tall format, with the matrix set up as 
 We do not impute values in the SVD++ model as it automatically generates an implicit user-song matrix.  This is a binary of whether or not a user has listened the song in a given period.  This implicit matrix captures the missing values.
 
 #### Model Exploration
-***So you ran the model. How? What choices did you have to make and why did you make them?***
+We concatenated the period with the song name to incorporate a time factor in the SVD++ algorithm.  This way the model predicts whether the user is likely to skip an individual song during a given period.  The song name and period were combined with three underscores between them.  Afterwards, when we were splitting the predictions dataset to calculate AUC, we dropped several song names because they contained three underscores within the name.
 
 #### Model Results
 ***Final results?***
