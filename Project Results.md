@@ -55,8 +55,8 @@ Within our Feature Engineering file you are able to see all the 24 features we c
 	* global-song-skip-percentage (global-song-skips/song_total_count)
 	* global-artist-skip-percentage (global-artist-skips/song_total_count)
 ###### Other Columns:
-	# age (age of user)
-	# gender (gender of user)
+	* age (age of user)
+	* gender (gender of user)
 
 
 ### Models
