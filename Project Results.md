@@ -26,14 +26,14 @@ We continued to use the Last.fm dataset, only this time we did not aggregate to 
 Within our Feature Engineering file you are able to see all the 27 features we created from out base data set. 
 
 ###### Timestamp Colmumns
-  * time of day, day of week, week vs weekday, quarter, month, last seen artist and all skip columns .
+  	* time of day, day of week, week vs weekday, quarter, month, last seen artist and all skip columns .
 ###### Count Columns: 
  	* track-weekday-count (count of times a song was listened to by the user over the weekday)
-  * user-artist-weeday-count (count of times an artist was listened to by the user over the weekday)
-	* track-daytime-count (count of times a song was listened during a particular time of day)
-  * artist_total_count (cumulative count of times an artist was listened by all users)
-  * song_total_count (cumulative count of times a song was listened to by all users)
-	* user-artist-count (cumulative count of times a song was listened to by a particular user) 
+	* user-artist-weeday-count (count of times an artist was listened to by the user over the weekday)
+  	* track-daytime-count (count of times a song was listened during a particular time of day)
+  	* artist_total_count (cumulative count of times an artist was listened by all users)
+  	* song_total_count (cumulative count of times a song was listened to by all users)
+  	* user-artist-count (cumulative count of times a song was listened to by a particular user) 
 	* user-track-total-count (cumulative count of times an artist was listened to by a particular user)
 ###### Skip Columns:
 	* user-song-skips (for each user cumulative skip per song counts, a skip is a song listened to for less than 1 minute)
