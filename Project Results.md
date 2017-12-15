@@ -97,7 +97,7 @@ Surprise requires the dataset to be in a tall format, with the matrix set up as 
 ![](data/period_preview.png)
 
 #### Imputation
-Imputation is not necessary for this model. SVD++ creates an implicit matrix, a binary of whether or not a user has listened to a song in a period. This implicit matrix captures the missing values.
+We do not impute values in the SVD++ model as it automatically generates an implicit user-song matrix.  This is a binary of whether or not a user has listened the song in a given period.  This implicit matrix captures the missing values.
 
 #### Model Exploration
 ***So you ran the model. How? What choices did you have to make and why did you make them?***
