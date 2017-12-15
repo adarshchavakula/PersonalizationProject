@@ -111,10 +111,10 @@ Method 1: We can combine the top K recommendations from the SVD++ model with the
 Method 2: After running the SVD++ model and the neural network, we create two skips probability vector for each user-song combination.  We then create a linear combination of these vectors to form our final output vector.  This vector can be thought of as an additional contextual feature about the users, which would be individually incorporated into a larger recommendation system that look at other aspects music personalization.
 
 ## Final Results
-***Performance (both time and accuracy. Would we use this?***
+***Performance (both time and accuracy). Would we use this?***
 The Neural Netowrk was able to train in a matter of minutes with many features, while the SVD++ model trained over many hours with only a few features. However, our SVD++ model significantly outpeformed the neural network model. Due to this we weighted the SVD model as 90% of our combined liear enseble and the neuroal network as only 10% of the combined linear ensemble. The AUC from the linear enseble (at 0.808) we created is marginally higher than the SVD++ standalone AUC (at 0.807 ) and significantly higher than the Neural Network AUC (at 0.609). An AUC of 0.8 tell us that we could use our ensemble model or simply the SVD++ for reccomendation in a professional setting. 
 
-***W Does this model perform better on some users/songs than others?*** 
+*** Does this model perform better on some users/songs than others?*** 
 The Neural Netowrk was only able to capture predicted skip values for songs previously heard by the user while the SVD++ was able to make novel predictions. Since the ensemble consisted of 90% of the SVD++ model we were able to include a large numer of skip predictions for novel songs. 
 
 ## Lessons
