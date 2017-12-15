@@ -25,7 +25,7 @@ We continued to use the Last.fm dataset, only this time we did not aggregate to 
 ***Show new features and how we engineered them, particularly the predicted variable.***
 Within our Feature Engineering file you are able to see all the 24 features we created from out base data set. 
 
-###### Timestamp Colmumns
+###### Timestamp Columns
   	* daytime (morning,afternoon, evening, etc; there are 5 time blocks)
 	* day of week (monday= 0, tuesday = ,... sunday = 6)
 	* weekday  
