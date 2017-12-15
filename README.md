@@ -128,9 +128,9 @@ While the neighborhood-based CF used a different data structure than the model-b
 
 ## Part II Objective
 
-We will incorporate timestamps and signup dates to further clarify users’ preferences for artists and tracks.  Based on these data points, we can derive a skips parameter.  This parameter indicates whether the user skipped to the next track in the playlist and will help us answer questions such as:
-* Can skips be used to improve music recommendation?
+We incorporated timestamps to further clarify users’ preferences for artists and tracks.  Based on this data points, we have derived a skips parameter (i.e., difference between start time and end time for a song).  This parameter indicates whether the user skipped to the next track in the playlist and will help us answer questions such as:
+* Can music recommendation be improved by incorporating skips?
 * Can we use timestamps and skips to identify the user’s mood (i.e., genre preference given an unspecified activity)?
 * After how many times of listening to a track is a user more likely to start skipping the track?
 
-In addition, we would also like to assess and utilize the value added by metadata like user's location, sex, age and artist genre in our personalization models.
+We used a hybrid approach mixing a neural network and a SVD++ model with a periodicity term.  The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history.  The SVD++ brings in a collaborative filtering component by capturing songs that a user has not yet listened by identifying similarities between user-song pairs in the latent space.
