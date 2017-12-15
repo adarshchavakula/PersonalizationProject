@@ -96,25 +96,19 @@ We evaluated our model using the AUC: **0.81**, RMSE: **0.136**, and MAE: **0.03
 While the AUC depends only on the rank order of the predicted probabilities, the RMSE fluctuates as the constant numbers are scaled.  For this reason, we focused primarily on using AUC to evaluate our model.
 
 ### Ensemble
-We can combine the SVD++ model with the neural network in two ways:
+We created an ensemble of the two models - SVD++ and the Neural Network to obtain better recommendations. The rationale behind this choice is that SVD++ captures similarities among users and can provide novel recommendations wheras the Neural Network is trained on the users' historic behavior to predict their likelihood of a skipping a song based on past behavior.
+
+Our method of ensembling the model is to use a simple linear combination of the predicitons from both the models.
+
+![Ensemble contribution](data/ensemble.png)
+
+We looked at different weghted averages of the model to assess the relative performace. Based on the observations, we decided to use an ensemble with 90% SVD++ contribution and 10% NN contribution for the final model.
 
 Method 1: We combine the top K recommendations from the SVD++ model with the top K NN predictions, where the top songs are those with the lowest probability of being skipped.  The user is then shown these top K recommendation, half of which incorporate a novelty aspect and the other half incorporate the users' historical behavior.
 
 Method 2: After running the SVD++ model and the neural network, we create two skip probability vectors for each user-song combination.  We then use a linear combination of these vectors to form our final output vector.  This vector can be thought of as an additional contextual feature about the users, which would be individually incorporated into a larger recommendation system that looks at other aspects music personalization.
 
-SVD++ Weight | NN Weight | Ensemble AUC
---- | --- | ---
-0.00 | 1.00 | 0.679
-0.05 | 0.95 | 0.763
-0.40 | 0.60 | 0.774
-0.50 | 0.50 | 0.789
-0.60 | 0.40 | 0.800
-0.80 | 0.20 | 0.810
-0.90 | 0.10 | 0.812
-0.95 | 0.05 | 0.811
-1.00 | 0.00 | 0.807
 
-![Ensemble contribution](data/ensemble.png)
 
 ## Final Results
 The neural network trains in a matter of minutes with a multitude of features, while the SVD++ model required several hours to train with only two features. Our SVD++ model significantly outpeformed the neural network model, which is why we weighted the SVD++ model as 90% of our combined linear ensemble. The neural network is 10% of the combined linear ensemble.
