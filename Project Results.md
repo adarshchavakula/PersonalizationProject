@@ -17,12 +17,10 @@ Our SVD++ model incorporates periodicity and captures songs that a user has not 
 Because both models output a vector of the probability a user will skip a song, we chose to run the models independently and combine the probabilities afterwards, hoping that the combined probability would improve the model's predictive power.
 
 ### Data
-***Introduce the data, maybe provide some summary stats?***
 
 We continued to use the Last.fm dataset, only this time we did not aggregate to the artist level. We instead kept the data in its disaggregated form, where each row is an observation of a user listening to a song at a given time. We engineered features to add to this data, mostly using the timestamp.
 
 ##### Feature Engineering
-***Show new features and how we engineered them, particularly the predicted variable.***
 Within our Feature Engineering file you are able to see all the 24 features we created from out base data set. 
 
 ###### Timestamp Columns:
