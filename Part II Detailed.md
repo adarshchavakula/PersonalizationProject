@@ -1,13 +1,11 @@
 # Final Project
-_**NOTE:** high level summary will go into the readme, this is the detailed writeup of our project. Think of this as our academic paper and the high level summary as a one pager._
+
 ## Introduction
 We are designing a recommendation system that incorporates the users’ likelihood to skip a song into the final output.  We have designed a skips parameter based on whether the user has listened to the song for more than 60 seconds.  In other words, if the user stopped listening to the song before the 60 second timepoint, we consider the song to have been skipped.
 
 In our literature review of various recommendation engines that are based on the users’ listening habits, we have not encountered an approach that modeled the users’ skip preferences.  We believe this parameter to add significant value as it helps us understand the users’ preference for a song based on an unspecified activity.  It may be that the user has grown tired of the song and no longer wants to hear it, but it can also be the case that the user is in a different listening mood and prefers to listen to something else.  This has been the primary motivation for incorporating skips.
 
 ### Approach
-***What did we want to do? What was our plan?***
-
 We chose to build a hybrid model using a neural network and SVD++.
 
 The neural network incorporates recency into the model, identifying how user preferences shift over the duration of their listening history.  Additionally, the neural network identifies latent features that affect the users' decision to skip a song.
@@ -17,7 +15,6 @@ Our SVD++ model incorporates periodicity and captures songs that the user has no
 Since both models output a vector of the probability a user will skip a song, we chose to run the models independently and combine the probabilities afterwards, hoping that the combined probability would improve the model's predictive power.
 
 ### Data
-
 We continued to use the Last.fm dataset, only this time we did not aggregate to the artist level. Instead, we kept the data in its disaggregated form, where each row is an observation of a user listening to a song at a given time. We engineered features to add to this data, mostly using the timestamp.
 
 ##### Feature Engineering
@@ -61,7 +58,6 @@ Within our Feature Engineering file you are able to see all the 24 features we c
 ### Neural Network Implementation
 
 #### Data Structure
-***From the base dataset, did you do any other data prep?***
 We added a gender column assigning a 1 or 2 index based on the user's gender. Otherwise, we kept all other characteristics of the csv we created in the feature engineering notebook.
 
 #### Imputation
@@ -75,7 +71,6 @@ We ran the neural network many times using a validation set and adjusting batch 
 
 #### Data Structure
 Surprise requires the dataset to be in a tall format, with the matrix set up as _user-song-skipped_. To include periodicity, we need to distinguish the period in which a song was listened while keeping the form required by Surprise. To do this, we concatenated `trackartist` with `period`.
-
 ![](data/period_preview.png)
 
 #### Imputation
@@ -101,12 +96,10 @@ Method 1: We can combine the top K recommendations from the SVD++ model with the
 Method 2: After running the SVD++ model and the neural network, we create two skips probability vector for each user-song combination.  We then create a linear combination of these vectors to form our final output vector.  This vector can be thought of as an additional contextual feature about the users, which would be individually incorporated into a larger recommendation system that look at other aspects music personalization.
 
 ## Final Results
-***Performance (both time and accuracy). Would we use this?***
 The Neural Netowrk was able to train in a matter of minutes with many features, while the SVD++ model trained over many hours with only two features.  Our SVD++ model significantly outpeformed the neural network model, which is why we weighted the SVD++ model as 90% of our combined linear ensemble.  The neural network is 10% of the combined linear ensemble.
 
 The AUC from the ensemble (at 0.808) we created is marginally higher than the SVD++ standalone AUC (at 0.807 ) and significantly higher than the neural network AUC (at 0.609). An AUC of 0.8 tell us that we could potentially leverage our ensemble model or simply the SVD++ for music recommendations in a commercial setting. 
 
-*** Does this model perform better on some users/songs than others?*** 
 The neural network captured only the predicted skip values for songs previously heard by the user, while the SVD++ model made novel predictions. Since the ensemble consisted of 90% of the SVD++ model, we are able to include a larger numer of skip predictions for novel songs.
 
 ## Lessons
