@@ -81,7 +81,7 @@ Imputation was necessary for the neural network as it can't handle missing value
 #### Model Tuning
 We trained the neural network using a validation set and tuned batch size, number of epochs, and the architecture. The chart below shows a few of our hyperparameters. We used AUC as evaluation metric for the validation set to help us choose our parameters. 
 
-![neuralNetworkParam.jpeg](https://github.com/adarshchavakula/PersonalizationProject/data/neuralNetworkParam.jpeg)
+![neuralNetworkParam.jpeg](data/neuralNetworkParam.jpeg)
 
 We observed that the model was very sensitive to overfitting and increasing the complexitiy resulted in deterioration of the validation AUC. So decided to keep the model simple. 
 
