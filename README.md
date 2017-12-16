@@ -25,7 +25,7 @@ The following is the play counts for the entire data set, grouped by hour of the
 We were interested in learning how neighborhood- and model-based collaborative filtering (CF) algorithms perform on aggregated data. These CF approaches help us understand how an improved recommendation engine can drive increased user engagement within a music platform.  We then utilized timestamps for the final project along with other metadata to improve the quality of our recommendations.
 
 ### Models: Neighborhood Collaborative Filtering and SVD
-We implemented a neighborhood based collaorative filtering technique for our user-based CF and implemented the SVD algorithm as our model-based CF. With these two models we predicted values indicating whether a user would listen to a particular artist. For more information, please read [Part I Detailed Analysis](Part%20I%20-%20Final%20Project/README.md).
+We implemented a neighborhood based collaorative filtering technique for our user-based CF and implemented the SVD algorithm as our model-based CF. With these two models we predicted values indicating whether a user would listen to a particular artist. For more information, please read [Part I Detailed Analysis](Part%20I%20-%20Mini%20Project/README.md).
 
 ### Conclusion
 The neighborhood-based collaborative filter results in a better RMSE at higher values of K, but does not bring MAE to a competitive level when compared to the baseline model. On the other hand, the SVD model-based collaborative filter outperforms the baseline at almost every comparison. Our results suggest that the SVD model would be more effective at predicting user preferences. We believe this model would be helpful for a draft recommender system.
