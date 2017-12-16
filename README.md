@@ -21,7 +21,7 @@ The following is the play counts for the entire data set, grouped by hour of the
 
 ## Part I
 
-###Objective
+### Objective
 We were interested in learning how neighborhood- and model-based collaborative filtering (CF) algorithms perform on aggregated data. These CF approaches help us understand how an improved recommendation engine can drive increased user engagement within a music platform.  We then utilized timestamps for the final project along with other metadata to improve the quality of our recommendations.
 
 ### Models: Neighborhood Collaborative Filtering and SVD
