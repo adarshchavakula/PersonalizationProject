@@ -1,4 +1,4 @@
-# Final Project
+# Final Project Detailed Analysis
 
 ## Introduction
 We designed a recommender system that predicts a user's probability of skipping a song. We created a `skipped` parameter that identifies whether a user skipped the song. Specifically, if a user listens to a song for less than sixty seconds, we consider that to be a skip.
