@@ -117,32 +117,32 @@ We evaluated our model using the AUC: **0.81**, RMSE: **0.136**, and MAE: **0.03
 While the AUC depends only on the rank order of the predicted probabilities, the RMSE fluctuates as the constant numbers are scaled.  For this reason, we focused primarily on using AUC to evaluate our model.
 
 ### Ensemble
-We created an ensemble of the two models - SVD++ and the Neural Network to obtain better recommendations. The rationale behind this choice is that SVD++ captures similarities among users and can provide novel recommendations wheras the Neural Network is trained on the users' historic behavior to predict their likelihood of a skipping a song based on past behavior.
+We created an ensemble of the two models - SVD++ and the Neural Network - to obtain better recommendations. The rationale behind this choice is that SVD++ captures similarities among users and can provide novel recommendations, whereas the Neural Network is trained on the users' historic behavior to predict their likelihood of a skipping a song based on past behavior.
 
-Our method of ensembling the model is to use a simple linear combination of the predicitons from both the models.
+Our method of ensembling the model is to use a linear combination of the predicitons from both models.
 
 ![Ensemble contribution](data/ensemble.png)
 
-We looked at different weghted averages of the model to assess the relative performace. Based on the observations, we decided to use an ensemble with 90% SVD++ contribution and 10% NN contribution for the final model.
+We looked at different weighted averages of the model to assess the relative performace. Based on the observations, we decided to use an ensemble with 90% SVD++ contribution and 10% Neural Network contribution for the final model.
 
 
 
 ## Model Utility
 
-Music recommendation involves numerous problems and we tried to address one of them in this project - likelihood of users skipping songs. The ensemble model predicts this probability for the users for a given song. The two models in the ensemble address this in distinct ways - The Neural Network is trained on the historical behavior of the users and the SVD++ looks at a broader scope of identifying similarities between users. 
+Music recommendation involves numerous problems and we tried to address one of them in this project - likelihood of users skipping songs. The ensemble model predicts this probability for the users for a given song. The two models in the ensemble address this in distinct ways. The Neural Network is trained on the historical behavior of the users and the SVD++ looks at a broader scope of identifying similarities between users and incorporates periodicity.
 
 The model can be utilized in two ways in a commercial music personalization setting:
 
 **Method 1 - Standalone** : We recommend the top K recommendations from the model to a user, where the top songs are those with the lowest probability of being skipped. The model incorporates both the user's historic preferences and behavior as well as novel predictions based on the preference of similar users. 
 
-**Method 2 - Broader Personalization System** : The ensemble enables us to create a probability vector for each user-song combination. This vector can be thought of as an additional contextual feature about the users, which would be incorporated into a larger recommendation system that looks at other aspects music personalization.
+**Method 2 - Broader Recommendation System** : The ensemble enables us to create a probability vector for each user-song combination. This vector can be thought of as an additional contextual feature about the users, which would be incorporated into a larger recommendation system that looks at other aspects music personalization.
 
 
 
 ## Final Results
-The neural network trains in a matter of minutes with a multitude of features, while the SVD++ model required several hours to train with only two features. Our SVD++ model significantly outpeformed the neural network model, which is why we weighted the SVD++ model as 90% of our combined linear ensemble. The neural network is 10% of the combined linear ensemble.
+The neural network trained in a matter of minutes with a multitude of features, while the SVD++ model required several hours to train with only two features. Our SVD++ model significantly outpeformed the neural network model, which is why we weighted the SVD++ model as 90% of our combined linear ensemble. The neural network is 10% of the combined linear ensemble.
 
-The AUC from the ensemble, **0.808**, is marginally higher than the SVD++ model alone AUC, **0.807**. The ensemble is significantly higher than the neural network AUC, **0.609**. An AUC of 0.8 suggests that we can leverage our ensemble model for music recommendations in a commercial setting. 
+The AUC from the ensemble, **0.812**, is marginally higher than the SVD++ model alone AUC, **0.807**. The ensemble is significantly higher than the neural network AUC, **0.679**. The benchmark AUC is **0.759**, obtained using the percentage of song-skips per user. An AUC of 0.81 suggests that we can leverage our ensemble model for music recommendations in a commercial setting. 
 
 The neural network captured the probability of skipping only for songs previously heard by the user, while the SVD++ model made novel predictions. Since the ensemble consisted of 90% of the SVD++ model, we are able to include a larger numer of skip predictions for new songs.
 
