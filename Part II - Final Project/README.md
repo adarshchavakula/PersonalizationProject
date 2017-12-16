@@ -121,7 +121,7 @@ We created an ensemble of the two models - SVD++ and the Neural Network to obtai
 
 Our method of ensembling the model is to use a simple linear combination of the predicitons from both the models.
 
-![Ensemble contribution](https://github.com/adarshchavakula/PersonalizationProject/data/ensemble.png)
+![Ensemble contribution](data/ensemble.png)
 
 We looked at different weghted averages of the model to assess the relative performace. Based on the observations, we decided to use an ensemble with 90% SVD++ contribution and 10% NN contribution for the final model.
 
